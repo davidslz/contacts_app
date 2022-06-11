@@ -22,5 +22,5 @@ Route::get('/example', function () {
 });
 
 Route::get('/example2', function () {
-    return "this is another route, just for a explain how works push on github";
+    return "this route are modify in the branc 'example-branch'";
 });
