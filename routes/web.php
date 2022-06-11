@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/example', function () {
     return "this route are create once again";
 });
+
+Route::get('/example2', function () {
+    return "this is another route, just for a explain how works push on github";
+});
