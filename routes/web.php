@@ -24,3 +24,7 @@ Route::get('/example', function () {
 Route::get('/example2', function () {
     return "this route are modify in the branc 'example-branch'";
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
