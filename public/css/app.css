@@ -10271,3 +10271,14 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.logo {
+    width: 60px;
+    filter: brightness(1.1);  /*quita el fondo blanco de la imagen */
+    mix-blend-mode: multiply;
+}
+
+.welcome {
+    background: url('/img/background.jpg');
+    background-position: center center;
+    background-size: cover;
+}
