@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,14 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/example', function () {
-    return "this route are create once again";
-});
-
-Route::get('/example2', function () {
-    return "this route are modify in the branc 'example-branch'";
-});
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('contacts/create', [ContactController::class, 'create'])->name('contacts.create');
+
+Route::post('contacts/', [ContactController::class, 'store'])->name('contacts.store');
