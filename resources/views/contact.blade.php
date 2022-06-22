@@ -11,13 +11,45 @@
                         <form action="{{ route('contacts.store') }}" method="post">
                             <div class="row mb-3">
                                 @csrf
+                                
                                 <label class="col-md-4 col-form-label text-md-end mb-3 mt-3">Name</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control mb-3 mt-3" name="name">
+                                    <input type="text" class="form-control mb-3 mt-3 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 </div>
+                                
                                 <label class="col-md-4 col-form-label text-md-end mb-3 mt-3">Phone Number</label>
                                 <div class="col-md-6">
-                                    <input type="tel" class="form-control mb-3 mt-3" name="phone_number">
+                                    <input type="tel" class="form-control mb-3 mt-3 @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}">
+                                    @error('phone_number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                </div>
+
+                                <label class="col-md-4 col-form-label text-md-end mb-3 mt-3">Email</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control mb-3 mt-3 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                </div>
+
+                                <label class="col-md-4 col-form-label text-md-end mb-3 mt-3">Age</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control mb-3 mt-3 @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}">
+                                    @error('age')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 </div>
 
                                 <div class="row m-3">

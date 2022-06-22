@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name', 150);
             $table->string('phone_number', 10);
+            $table->string('email', 255);
+            $table->tinyInteger('age', unsigned:true);
             $table->timestamps();
         });
     }
