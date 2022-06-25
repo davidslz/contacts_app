@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', fn () => auth::check() ? redirect('/contacts/index') : view('welcome'));
 
 Auth::routes();
 
@@ -28,3 +26,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('contacts/create', [ContactController::class, 'create'])->name('contacts.create');
 
 Route::post('contacts/', [ContactController::class, 'store'])->name('contacts.store');
+
+Route::get('/contacts/index', [ContactController::class, 'index'])->name('contacts.index');
