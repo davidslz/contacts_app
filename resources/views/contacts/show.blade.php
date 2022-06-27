@@ -34,7 +34,9 @@
                         <p><strong>Last Updated: </strong>{{ $contact->updated_at }}</p>
                         <div class="d-flex justify-content-between">
                             {{-- <button class="btn bg-secondary col-3 m-1">regresar</button> --}}
-                            <button class="btn bg-warning col-3 m-1">edit</button>
+                            <a href=" {{ route('contacts.edit', $contact->id) }}">
+                                <button class="btn bg-warning m-1">edit</button>
+                            </a>
                             <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST">
                                 @csrf
                                 @method('delete')

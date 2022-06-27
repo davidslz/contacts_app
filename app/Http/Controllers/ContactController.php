@@ -67,7 +67,7 @@ class ContactController extends Controller
      */
     public function edit(contact $contact)
     {
-        //
+        return view('contacts.edit', compact('contact'));
     }
 
     /**
@@ -79,7 +79,18 @@ class ContactController extends Controller
      */
     public function update(Request $request, contact $contact)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|max:255',
+            'phone_number' => 'required|digits:10',
+            'email' => 'required|email',
+            'age' => 'required|numeric|min:1|max:100'
+        ]);
+
+        $contact->update($data);
+
+        // $contact->save($data);
+
+        return view('contacts.show', compact('contact'));
     }
 
     /**
