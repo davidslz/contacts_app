@@ -5,7 +5,9 @@
         @forelse ($contacts as $contact)
             <div class="d-flex justify-content-between bg-dark mb-3 rounded px-2 py-2">
                 <div>
-                    <img src="/img/C.jpg" class="logo">
+                    <a href="{{ route('contacts.show', $contact->id) }}">
+                        <img src="/img/C.jpg" class="logo">
+                    </a>
                 </div>
 
                 <div class="d-flex align-items-center">
