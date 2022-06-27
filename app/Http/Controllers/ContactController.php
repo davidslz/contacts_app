@@ -90,6 +90,8 @@ class ContactController extends Controller
      */
     public function destroy(contact $contact)
     {
-        //
+        $contact->delete();
+
+        return redirect()->route('contacts.index', ['contacts' => contact::all()]);
     }
 }

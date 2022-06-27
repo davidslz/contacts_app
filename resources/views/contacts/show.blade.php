@@ -35,7 +35,11 @@
                         <div class="d-flex justify-content-between">
                             {{-- <button class="btn bg-secondary col-3 m-1">regresar</button> --}}
                             <button class="btn bg-warning col-3 m-1">edit</button>
-                            <button class="btn bg-danger col-3 m-1">delete</button>
+                            <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button class="btn bg-danger m-1">delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>
