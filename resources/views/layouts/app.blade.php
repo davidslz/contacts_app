@@ -24,7 +24,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('/') }}">
                     <img src="/img/C.jpg" class="logo">
                     {{ config('app.name', 'Laravel') }}
                 </a>
