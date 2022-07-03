@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\contact;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('contacts.index', ['contacts' => contact::all()]);
+        return view('contacts.index', ['contacts' => auth()->user()->contacts]);
     }
 
     /**
@@ -42,6 +43,10 @@ class ContactController extends Controller
             'email' => 'required|email',
             'age' => 'required|numeric|min:1|max:100'
         ]);
+
+        //auth()->user()->contacts()->create($data);
+
+        $data['user_id'] = auth()->id();
 
         contact::create($data);
 
