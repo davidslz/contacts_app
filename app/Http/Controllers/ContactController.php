@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\contact;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -72,6 +70,8 @@ class ContactController extends Controller
      */
     public function show(contact $contact)
     {
+        $this->authorize('view', $contact);
+
         return view('contacts.show', compact('contact'));
     }
 
@@ -83,6 +83,8 @@ class ContactController extends Controller
      */
     public function edit(contact $contact)
     {
+        $this->authorize('update', $contact);
+        
         return view('contacts.edit', compact('contact'));
     }
 
@@ -95,6 +97,8 @@ class ContactController extends Controller
      */
     public function update(Request $request, contact $contact)
     {
+        $this->authorize('update', $contact);
+
         $data = $request->validate([
             'name' => 'required|max:255',
             'phone_number' => 'required|digits:10',
@@ -103,8 +107,6 @@ class ContactController extends Controller
         ]);
 
         $contact->update($data);
-
-        // $contact->save($data);
 
         return view('contacts.show', compact('contact'));
     }
@@ -117,6 +119,8 @@ class ContactController extends Controller
      */
     public function destroy(contact $contact)
     {
+        $this->authorize('delete', $contact);
+
         $contact->delete();
 
         return redirect()->route('contacts.index', ['contacts' => contact::all()]);
